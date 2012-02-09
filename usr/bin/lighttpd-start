@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo "Starting lighttpd...";
+sleep 5; # without this, the server may fail to bind to a port because there may not be an active connection during the later boot stages
+lighttpd -D -f /usr/local/lighttpd.conf;
