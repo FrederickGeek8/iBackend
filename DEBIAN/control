@@ -1,0 +1,10 @@
+Package: com.hatgeek.iBackend
+Author: FrederickGeek8 <FrederickGeek8@gmail.com>
+Section: Administration
+Name: iBackend
+Version: 1.00
+Architecture: iphoneos-arm
+Description: A backend for your iDevices. Has several option right now. Lots more to come.
+Homepage: http://www.hatgeek.com/mobile/iBackend
+Maintainer: FrederickGeek8
+Depends: php, lighttpd, bash
