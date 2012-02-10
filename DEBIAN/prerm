@@ -3,7 +3,7 @@
 declare -a cydia
 cydia=($CYDIA)
 
-if [[ $1 == install ]]; then
+if [[ $1 == remove ]]; then
     if [[ ${CYDIA+@} ]]; then
        eval "echo 'finish:reboot' >&${cydia[0]}"
     fi
