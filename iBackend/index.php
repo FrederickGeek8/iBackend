@@ -1,4 +1,12 @@
-<html><body><center><fieldset><legend>System Spec</legend>
+<!DOCTYPE html PUBLIC "-//W3C/DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>iBackend 1.0</title>
+</head>
+<body>
+<center>
+<fieldset><legend>System Spec</legend>
 <p><?php
 echo ("Your Devices IP ");
 $hostname = gethostbyaddr($_SERVER['SERVER_NAME']);
@@ -168,12 +176,7 @@ if(isset($_POST['SendCMD'])) {
 
 
 
-<!DOCTYPE html PUBLIC "-//W3C/DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>iBackend 1.0</title>
-	</head>
+
 	<fieldset><legend>Upload Files</legend><body>
 		<center>		
 		<div>
