@@ -3,6 +3,54 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>iBackend 1.0</title>
+<style type='text/css'>
+body
+{
+    background-image:url('bg.png');
+color:white;
+    font-family:"Arial";
+}
+.progress {
+border: 2px solid #5E96E4;
+height: 32px;
+width: 540px;
+margin: 30px auto;
+}
+.progress .prgbar {
+background: #A7C6FF;
+width: <?php echo $dp; ?>%;
+position: relative;
+height: 32px;
+    z-index: 999;
+}
+.progress .prgtext {
+color: white;
+    text-align: center;
+    font-size: 13px;
+padding: 9px 0 0;
+width: 540px;
+position: absolute;
+    z-index: 1000;
+}
+.progress .prginfo {
+margin: 3px 0;
+}
+pre {
+background: none repeat scroll 0 0 #333333;
+overflow: auto;
+    border-radius: 8px 8px 8px 8px;
+height: auto;
+    max-height: 500px;
+color: white;
+    font-family: Monaco,Courier,MonoSpace;
+    font-size: 12px;
+    line-height: 1.8;
+margin: 0 0 25px;
+overflow: auto;
+padding: 10px;
+position: relative;
+}
+</style>
 </head>
 <body>
 <center>
@@ -88,54 +136,7 @@ function formatSize( $bytes )
 }
 
 ?>
-<style type='text/css'>
-body
-{
-background-image:url('bg.png');
-color:white;
-font-family:"Arial";
-}
-.progress {
-        border: 2px solid #5E96E4;
-        height: 32px;
-        width: 540px;
-        margin: 30px auto;
-}
-.progress .prgbar {
-        background: #A7C6FF;
-        width: <?php echo $dp; ?>%;
-        position: relative;
-        height: 32px;
-        z-index: 999;
-}
-.progress .prgtext {
-        color: white;
-        text-align: center;
-        font-size: 13px;
-        padding: 9px 0 0;
-        width: 540px;
-        position: absolute;
-        z-index: 1000;
-}
-.progress .prginfo {
-        margin: 3px 0;
-}
-pre {
-            background: none repeat scroll 0 0 #333333;
-            overflow: auto;
-            border-radius: 8px 8px 8px 8px;
-            height: auto;
-            max-height: 500px;
-            color: white;
-            font-family: Monaco,Courier,MonoSpace;
-            font-size: 12px;
-            line-height: 1.8;
-            margin: 0 0 25px;
-            overflow: auto;
-            padding: 10px;
-            position: relative;
-        }
-</style>
+
 </center>
 <div class='progress'>
         <div class='prgtext'><?php echo $dp; ?>% Disk Used</div>
