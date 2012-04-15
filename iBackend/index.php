@@ -172,7 +172,16 @@ if(isset($_POST['SendCMD'])) {
     $log = file_get_contents('cmd.log');
 }
 ?>
-
+<?php
+    if(isset($_POST['clog'])) {
+        shell_exec("rm /iBackend/cmd.log");
+    }
+    ?>
+<form action="" method="post" enctype="multipart/formdata">
+<p>
+<input type="submit" name="clog" value="Clear Log" align="left" />
+</p>
+</form>
 <code><pre><?php echo $log; ?></pre></code>
 <center><form action="" method="post" enctype="multipart/formdata">
 	<p>	
