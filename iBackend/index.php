@@ -179,7 +179,7 @@ if(isset($_POST['SendCMD'])) {
     ?>
 <form action="" method="post" enctype="multipart/formdata">
 <p>
-<input type="submit" name="clog" value="Clear Log" align="left" />
+<input type="submit" name="clog" value="Clear Log" align="right" />
 </p>
 </form>
 <code><pre><?php echo $log; ?></pre></code>
