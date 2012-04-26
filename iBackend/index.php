@@ -58,96 +58,96 @@ position: relative;
 <center>
 <fieldset><legend>System Spec</legend>
 <p><?php
-echo ("Your Devices IP ");
-$hostname = gethostbyaddr($_SERVER['SERVER_NAME']);
-echo $hostname;
-?></p>
+    echo ("Your Devices IP ");
+    $hostname = gethostbyaddr($_SERVER['SERVER_NAME']);
+    echo $hostname;
+    ?></p>
 <p><?php
-echo ("Current device: ");
-passthru("uname -m");
-?></p>
+    echo ("Current device: ");
+    passthru("uname -m");
+    ?></p>
 <p><?php
-echo ("Your IP is ");
-$userip = gethostbyaddr($_SERVER['REMOTE_ADDR']);
-echo $userip;
-?></p>
+    echo ("Your IP is ");
+    $userip = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+    echo $userip;
+    ?></p>
 <p><?php
- echo "uname: ". php_uname("s") ."\n";
- echo ("</br>");
- echo "OS: ". PHP_OS ."\n";
-?></p>
+    echo "uname: ". php_uname("s") ."\n";
+    echo ("</br>");
+    echo "OS: ". PHP_OS ."\n";
+    ?></p>
 <p>
 <?php
-echo ("CPU usage: ");
-function ServerLoad()
-{
-
-$stats = explode(' ', substr(exec('uptime'), -14));
-$av = round((($stats[0] + $stats[1] + $stats[2])));
-return ($av);
-
-
-}
-
-echo ServerLoad() . '%';
-?>
+    echo ("CPU usage: ");
+    function ServerLoad()
+    {
+        
+        $stats = explode(' ', substr(exec('uptime'), -14));
+        $av = round((($stats[0] + $stats[1] + $stats[2])));
+        return ($av);
+        
+        
+    }
+    
+    echo ServerLoad() . '%';
+    ?>
 </p>
 
 
 
 
 <?php
-if(isset($_POST['respring'])) {
-	echo exec("killall SpringBoard");
-}
-
-if(isset($_POST['restart'])) {
-	echo exec("/sbin/reboot");
-}
-
-if(isset($_POST['shutdown'])) {
-	echo exec("/sbin/halt");
-}
-
-if(isset($_POST['play'])) {
-	echo exec("play /System/Library/Audio/UISounds/alarm.caf");
-}
-?>
+    if(isset($_POST['respring'])) {
+        echo exec("killall SpringBoard");
+    }
+    
+    if(isset($_POST['restart'])) {
+        echo exec("/sbin/reboot");
+    }
+    
+    if(isset($_POST['shutdown'])) {
+        echo exec("/sbin/halt");
+    }
+    
+    if(isset($_POST['play'])) {
+        echo exec("play /System/Library/Audio/UISounds/alarm.caf");
+    }
+    ?>
 
 <?php
-
-/* get disk space free (in bytes) */
-$df = disk_free_space("/private/var");
-/* and get disk space total (in bytes)  */
-$dt = disk_total_space("/private/var");
-/* now we calculate the disk space used (in bytes) */
-$du = $dt - $df;
-/* percentage of disk used - this will be used to also set the width % of the progress bar */
-$dp = sprintf('%.2f',($du / $dt) * 100);
-
-/* and we formate the size from bytes to MB, GB, etc. */
-$df = formatSize($df);
-$du = formatSize($du);
-$dt = formatSize($dt);
-
-function formatSize( $bytes )
-{
+    
+    /* get disk space free (in bytes) */
+    $df = disk_free_space("/private/var");
+    /* and get disk space total (in bytes)  */
+    $dt = disk_total_space("/private/var");
+    /* now we calculate the disk space used (in bytes) */
+    $du = $dt - $df;
+    /* percentage of disk used - this will be used to also set the width % of the progress bar */
+    $dp = sprintf('%.2f',($du / $dt) * 100);
+    
+    /* and we formate the size from bytes to MB, GB, etc. */
+    $df = formatSize($df);
+    $du = formatSize($du);
+    $dt = formatSize($dt);
+    
+    function formatSize( $bytes )
+    {
         $types = array( 'B', 'KB', 'MB', 'GB', 'TB' );
         for( $i = 0; $bytes >= 1024 && $i < ( count( $types ) -1 ); $bytes /= 1024, $i++ );
-                return( round( $bytes, 2 ) . " " . $types[$i] );
-}
-
-?>
+        return( round( $bytes, 2 ) . " " . $types[$i] );
+    }
+    
+    ?>
 
 </center>
 <div class='progress'>
-        <div class='prgtext'><?php echo $dp; ?>% Disk Used</div>
-        <div class='prgbar'></div>
-        <div class='prginfo'>
-                <span style='float: left;'><?php echo "$du of $dt used"; ?></span>
-                <span style='float: right;'><?php echo "$df of $dt free"; ?></span>
-                <span style='clear: both;'></span>
-        </div>
+<div class='prgtext'><?php echo $dp; ?>% Disk Used</div>
+<div class='prgbar'></div>
+<div class='prginfo'>
+<span style='float: left;'><?php echo "$du of $dt used"; ?></span>
+<span style='float: right;'><?php echo "$df of $dt free"; ?></span>
+<span style='clear: both;'></span>
+</div>
 </div>
 </fieldset>
 </br>
@@ -163,15 +163,15 @@ function formatSize( $bytes )
 </fieldset>
 </center>
 <?php
-if(isset($_POST['SendCMD'])) {
-    $logFile = "cmd.log";
-    $fh = fopen($logFile, 'a');
-    $stringData = "root@" . $hostname . ": " . shell_exec("{$_POST['cmd']}\n");
-    fwrite($fh, $stringData);
-    fclose($fh);
-    $log = file_get_contents('cmd.log');
-}
-?>
+    if(isset($_POST['SendCMD'])) {
+        $logFile = "cmd.log";
+        $fh = fopen($logFile, 'a');
+        $stringData = "root@" . $hostname . ":" . "{$_POST['cmd']}\n" . shell_exec("{$_POST['cmd']}\n");
+        fwrite($fh, $stringData);
+        fclose($fh);
+        $log = file_get_contents('cmd.log');
+    }
+    ?>
 <?php
     if(isset($_POST['clog'])) {
         shell_exec("rm /iBackend/cmd.log");
@@ -184,40 +184,39 @@ if(isset($_POST['SendCMD'])) {
 </form>
 <code><pre><?php echo $log; ?></pre></code>
 <center><form action="" method="post" enctype="multipart/formdata">
-	<p>	
-		<input type="text" name="cmd" placeholder="Enter Command" />
-		<input type="submit" name="SendCMD" value="Send Command"/>
-	</p>
+<p>	
+<input type="text" name="cmd" placeholder="Enter Command" />
+<input type="submit" name="SendCMD" value="Send Command"/>
+</p>
 </form></center>
 
 
 
 
 
-	<fieldset><legend>Upload Files</legend><body>
-		<center>		
-		<div>
-			<form action="" method="post" enctype="multipart/form-data">
-				<p>
-					<input type="file" name="files[]" multiple="multiple" min="1" max="9999" />
-					</br>
-					</br>
-					</br>
-					</br>
-					<input type="text" name="furl" placeholder="Where to upload file" />
-					<input type="submit" name="Upload" />
-				</p>			
-			</form>		
-		</div>	
-		</center>
-	</body></fieldset>
+<fieldset><legend>Upload Files</legend><body>
+<center>		
+<div>
+<form action="" method="post" enctype="multipart/form-data">
+<p>
+<input type="file" name="files[]" multiple="multiple" min="1" max="9999" />
+</br>
+</br>
+</br>
+</br>
+<input type="text" name="furl" placeholder="Where to upload file" />
+<input type="submit" name="Upload" />
+</p>			
+</form>		
+</div>	
+</center>
+</body></fieldset>
 </html>
 <?php
-if (isset($_FILES['files'])){
-	foreach ($_FILES['files']['tmp_name'] as $key => $tmp_name){
-		move_uploaded_file($tmp_name, "{$_POST['furl']}/{$_FILES['files']['name'][$key]}");
-	}
-}
-
-?>
-
+    if (isset($_FILES['files'])){
+        foreach ($_FILES['files']['tmp_name'] as $key => $tmp_name){
+            move_uploaded_file($tmp_name, "{$_POST['furl']}/{$_FILES['files']['name'][$key]}");
+        }
+    }
+    
+    ?>
