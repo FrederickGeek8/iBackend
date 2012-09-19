@@ -150,7 +150,7 @@ position: relative;
 <center>
 <fieldset>
 <legend>Actions</legend>
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/formdata">
 <input type="submit" value="Respring Device" name="respring" />
 <input type="submit" value="Restart Device" name="restart" />
 <input type="submit" value="Shutdown Device" name="shutdown" />
