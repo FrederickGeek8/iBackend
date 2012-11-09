@@ -1,5 +1,3 @@
 This (iBackend) is a backend for iDevices that allows you to upload files, send commands, reboot / shutdown / respring, play sounds (great if you lose your iDevice), and get system specs.
 
 Just really PHP and some config files for lighttpd. There isn't much compiling to be done. You can package this up as a deb and send install it on your device (dpkg -b <Directory>). Or you could just upload index.php to your device because config should already be on there if you got the package from repo.hatgeek.com 
-
-SORRY! REPO.HATGEEK.COM IS DOWN!!! We should have it up shortly
